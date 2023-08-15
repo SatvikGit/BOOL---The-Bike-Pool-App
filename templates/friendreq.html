@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Add Friend
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <h3 style="color : blue; margin-bottom : 30px">ADD FRIEND</h3>
+    {% if success %}
+    <div class="alert alert-success" role="alert" style="width : 100%">
+        Friend Request Sent Successfully!
+    </div>
+    <div class="mb-3">
+        <a class="btn btn-primary" href="/add_friend" style="margin-top : 10px">Send Another Friend Request</a>
+    </div>
+    {% elif already_sent %}
+    <div>
+        You've already sent a Friend Request to this user.
+    </div>
+    <div class="mb-3">
+        <a class="btn btn-primary" href="/add_friend" style="margin-top : 10px">Send Another Friend Request</a>
+    </div>
+    {% else %}
+    <form method="POST">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus required class="form-control mx-auto w-auto" id="friend_username" name="friend_username" placeholder="Username" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit" style="margin-top : 10px">Add Friend</button>
+    </form>
+    {% endif %}
+</div>
+{% endblock %}

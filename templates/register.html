@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <form action="/register" method="POST">
+        <h2 style="color : blue; margin-bottom : 30px">REGISTER</h2>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus required class="form-control mx-auto w-auto" id="username" name="username" placeholder="Username" type="text">
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus required class="form-control mx-auto w-auto" id="fullname" name="fullname" placeholder="Full Name" type="text">
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus required class="form-control mx-auto w-auto" id="address" name="address" placeholder="Address" type="text">
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus required class="form-control mx-auto w-auto" id="city" name="city" placeholder="City" type="text">
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="bike" name="bike" placeholder="Bike Owned" type="text">
+            <span style="color : red">*Enter 'NOT OWNED' if you don't own any*</span>
+        </div>
+        <div class="mb-3">
+            <input required class="form-control mx-auto w-auto" id="password" name="password" placeholder="Password" type="password">
+            <span style="color : red">* must require at least one uppercase character, lowercase character, number, special character (min. 8 characters long)</span>
+        </div>
+        <div class="mb-3">
+            <input required class="form-control mx-auto w-auto" id="confirmation" name="confirmation" placeholder="Confirm Password" type="password">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" id="phone" name="phone" placeholder="Enter Your Mobile Number" type="tel" pattern="[0-9]{10}">
+            <span style="color : red">*Please enter a valid Indian Phone Number*</span>
+        </div>
+        <button class="btn btn-primary" type="submit">Register</button>
+        <div class="mb-3">
+            <p style="padding-top : 15px">Already have an account<a href="/register" style="padding-left : 5px">Log-In Here</a></p>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Create Pool
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <form action="/create_pool" method="POST">
+        <h3 style="color : blue; margin-bottom : 30px">CREATE POOL</h3>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus required class="form-control mx-auto w-auto" id="start" name="start" placeholder="Start Adderess" type="text">
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" required class="form-control mx-auto w-auto" id="destination" name="destination" placeholder="Destination" type="text">
+            <span style="color : red">*Pool disappears after 2 hours*</span>
+        </div>
+        <button class="btn btn-primary" type="submit">Create Pool</button>
+    </form>
+</div>
+{% endblock %}

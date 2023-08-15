@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Change Password
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <form action="/change_password" method="POST">
+        <h3 style="color : blue; margin-bottom : 30px">CHANGE PASSWORD</h3>
+        <div class="mb-3">
+            <input required class="form-control mx-auto w-auto" id="old_password" name="old_password" placeholder="Old Password" type="password">
+        </div>
+        <div class="mb-3" style="margin-top : 30px">
+            <input required class="form-control mx-auto w-auto" id="new_password" name="new_password" placeholder="New Password" type="password">
+        </div>
+        <div class="mb-3">
+            <input required class="form-control mx-auto w-auto" id="confirmation" name="confirmation" placeholder="Confirm Password" type="password">
+        </div>
+        <button class="btn btn-primary" type="submit">Change Password</button>
+    </form>
+</div>
+{% endblock %}

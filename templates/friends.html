@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Friends
+{% endblock %}
+
+{% block main %}
+{% if senders %}
+<h3 style="margin-bottom : 30px">NEW FRIEND REQUESTS</h3>
+<ul class="reqs">
+    {% endif %}
+    {% for sender in senders %}
+    <li>
+        <form action="/friends" method="POST">
+            <input type="hidden" name="sender" value="{{ sender }}">
+            <span class="bullet">Friend Request From {{ sender }} : </span>
+            <button type="button" id="accept" class="btn btn-primary btn-sm accept-button">Accept</button>
+            <button type="button" id="reject" class="btn btn-primary btn-sm reject-button">Reject</button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+
+{% if friends_data %}
+<h3 style="color : blue; margin-top : 50px; margin-bottom : 30px; text-decoration : underline">FRIENDS</h3>
+<table class="table table-bordered">
+    <thead style="background-color : #ADD8E6">
+        <tr>
+            <th scope="col">Username</th>
+            <th scope="col">Full Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">Bike Owned</th>
+            <th scope="col">Send Invite</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for username, fullname, address, bike in friends_data %}
+        <tr>
+            <th scope="row">{{ username }}</th>
+            <td>{{ fullname }}</td>
+            <td>{{ address }}</td>
+            <td class="{% if bike == 'NOT AVAILABLE' %}red-text{% elif bike == 'NOT OWNED' %}blue-text{% endif %}">{{ bike }}</td>
+            <td><a class="btn btn-primary" href="/invite">Invite</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+
+{% if not senders and not friends_data %}
+<h2>You don't have any friends yet</h2>
+<h3 style="margin-top : 10px"><a class="btn btn-primary" href="/add_friend">Add Friend</a></h3>
+{% endif %}
+
+<script>
+    var acceptbuttons = document.getElementsByClassName("accept-button");
+    var rejectbuttons = document.getElementsByClassName("reject-button");
+
+    Array.from(acceptbuttons).forEach(function(button) {
+        button.addEventListener("click", function() {
+            var sender = button.parentElement.querySelector("input[name = 'sender']").value;
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/friends", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    console.log("Friend Request Accepted");
+                } else {
+                    console.log("Unable to Accept Friend Request");
+                }
+            };
+            xhr.send(JSON.stringify({
+                option: "accept",
+                sender: sender
+            }));
+        });
+    });
+
+    Array.from(rejectbuttons).forEach(function(button) {
+        button.addEventListener("click", function() {
+            var sender = button.parentElement.querySelector("input[name = 'sender']").value;
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/friends", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    console.log("Friend Request Rejected");
+                } else {
+                    console.log("Unable to Reject Friend Request");
+                }
+            };
+            xhr.send(JSON.stringify({
+                option: "reject",
+                sender: sender
+            }));
+        });
+    });
+</script>
+{% endblock %}

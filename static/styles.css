@@ -1,0 +1,103 @@
+/* Size for brand */
+nav .navbar-brand {
+    font-size: xx-large;
+}
+
+/* Colors for brand */
+nav .navbar-brand .blue {
+    color: #537fbe;
+}
+
+nav .navbar-brand .red {
+    color: #ea433b;
+}
+
+nav .navbar-brand .yellow {
+    color: #f5b82e;
+}
+
+nav .navbar-brand .green {
+    color: #2e944b;
+}
+
+.nav-item {
+    margin-right: 8px;
+}
+
+.container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: inline-block;
+    width: 80px;
+}
+
+.reqs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+.reqs li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.bullet::before {
+    content: "\2022";
+    /* Unicode bullet character */
+    margin-right: 10px;
+}
+
+.friend-req-info {
+    display: flex;
+    align-items: center;
+}
+
+.friend-req-info p {
+    margin: 0;
+    margin-right: 10px;
+}
+
+.reqs span {
+    font-weight: bold;
+    text-align: center;
+}
+
+.reqs button {
+    margin-left: 10px;
+}
+
+.table-bordered {
+    border: 2px solid #008B8B;
+}
+
+.table-bordered tbody tr:nth-of-type(odd) {
+    background-color: #EAF2F8;
+}
+
+.table-bordered tbody tr:nth-of-type(even) {
+    background-color: #D1EAF8;
+}
+
+.red-text {
+    color: red;
+    font-weight: 700;
+}
+
+.blue-text {
+    color: blue;
+    font-weight: 700;
+}

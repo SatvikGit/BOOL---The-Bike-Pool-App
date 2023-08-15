@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block main %}
+{% if nearby_data %}
+<h3 style="color : blue; margin-top : 50px; margin-bottom : 30px; text-decoration : underline">Nearby Pools</h3>
+<table class="table table-bordered">
+    <thead style="background-color : #ADD8E6">
+        <tr>
+            <th scope="col">Full Name</th>
+            <th scope="col">Bike Owned</th>
+            <th scope="col">Contact No.</th>
+            <th scope="col">Origin</th>
+            <th scope="col">Destination</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for pool in nearby_data %}
+        <tr id="pool">
+            <th scope="row">{{ pool["fullname"] }}</th>
+            <td class="{% if pool['bike'] == 'NOT AVAILABLE' %}red-text{% elif pool['bike'] == 'NOT OWNED' %}blue-text{% endif %}">{{ pool["bike"] }}</td>
+            <td>{{ pool["phone"] }}</td>
+            <td>{{ pool["origin"] }}</td>
+            <td>{{ pool["destination"] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<h3 style="color : red; margin-top : 50px; margin-bottom : 30px; text-decoration : underline">*NO NEARBY POOLS*</h3>
+<h4><a class="btn btn-primary" href="/create_pool" style="margin-top : 10px">Create a Pool here</a></h4>
+{% endif %}
+
+{% if invite_data %}
+<h3 style="color : blue; margin-top : 50px; margin-bottom : 30px; text-decoration : underline">Invitation From Friend(s)</h3>
+<table class="table table-bordered">
+    <thead style="background-color : #ADD8E6">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Bike Owned</th>
+            <th scope="col">Contact No.</th>
+            <th scope="col">Origin</th>
+            <th scope="col">Destination</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for pool in invite_data %}
+        <tr id="pool">
+            <th scope="row">{{ pool["fullname"] }}</th>
+            <td class="{% if pool['bike'] == 'NOT AVAILABLE' %}red-text{% elif pool['bike'] == 'NOT OWNED' %}blue-text{% endif %}">{{ pool["bike"] }}</td>
+            <td>{{ pool["phone"] }}</td>
+            <td>{{ pool["origin"] }}</td>
+            <td>{{ pool["destination"] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+{% endblock %}

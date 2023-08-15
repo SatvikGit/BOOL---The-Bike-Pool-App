@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Invite Friend
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <form action="/invite" method="POST">
+        {% if friends_list %}
+        <h3 style="color : blue; margin-bottom : 30px">INVITE FRIEND</h3>
+        <select class="form-select" aria-label="Default select example" name="friend_username" style="margin-bottom : 18px; width : 210px; display : inline-block; align-items : center; color : blue">
+            <option selected disabled>Friend's Username</option>
+            {% for friend in friends_list %}
+            <option>{{ friend }}</option>
+            {% endfor %}
+        </select>
+        {% else %}
+        <div>
+            You don't have any friends yet.
+        </div>
+        {% endif %}
+        <div class="mb-3">
+            <input autocomplete="off" autofocus required class="form-control mx-auto w-auto" id="origin" name="origin" placeholder="Start Address" type="text">
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus required class="form-control mx-auto w-auto" id="destination" name="destination" placeholder="Destination" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit" style="margin-top : 10px">Add Friend</button>
+    </form>
+</div>
+{% endblock %}
