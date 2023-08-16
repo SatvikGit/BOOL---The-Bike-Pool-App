@@ -25,6 +25,7 @@ app.secret_key = "secret_key"
 
 # Configure CS50 Library to use SQLite database
 db = SQL("sqlite:///project.db")
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///project.db'
 
 
 # This decorator sets response headers to prevent caching
